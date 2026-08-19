@@ -2,7 +2,24 @@
 
 > Status in engram: **L4 — third platform, shipped v1.0.3 (2026-07-16), hardened v1.0.4.** Contributed by @luanweslley77 (#5, four review rounds; #6, one). The only platform that required *real adapter code*.
 
-OpenCode plugins are npm packages (TypeScript, `@opencode-ai/plugin`), loaded from the npm cache. That one fact drives the entire adapter design.
+OpenCode plugins are npm packages (TypeScript, `@opencode-ai/plugin`), loaded from the npm cache. That one fact drives the entire adapter design — **for plugins that ship commands/agents/tools.** For **skills-only** plugins, the calculus changed in 2026-08: see the `skills.paths` section below before writing any adapter.
+
+## Skills-only plugins need ZERO adapter code now (verified 2026-08-19, OpenCode v1.18.4)
+
+The user config schema (`https://opencode.ai/config.json`, `ConfigV2`) has grown a first-class key:
+
+```jsonc
+{
+  "skills": {
+    "paths": ["~/path/to/clone/skills"],   // extra skill folders (recursive SKILL.md scan, ~ expands)
+    "urls": ["https://…/.well-known/skills/"]  // remote skills (untested here)
+  }
+}
+```
+
+So the Phase-3 preference ladder's rung 2 (config entries in the user's config — the Hermes route) now applies to OpenCode: clone the repo, add one `skills.paths` entry, done. `opencode debug skill` lists what actually loaded — a rare **behavior-level** diagnostic (it prints the parsed skill contents, not just your manifest paths), so use it as the verification step.
+
+**Receipt:** production-grade v5.6.0 (14 skills, `_shared/` prose read at runtime, no engine) shipped OpenCode support as exactly one config entry — all 14 skills discovered from a plain clone, `_shared/` correctly not offered, `~` expansion confirmed, on a live v1.18.4 binary. The engram-style self-extract adapter below remains the route when you need **commands, agents, hooks, or an update flow** — none of which `skills.paths` provides.
 
 ## Loader model
 
