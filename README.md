@@ -71,7 +71,7 @@ This is distilled from **one plugin shipping seven platforms** (plus a researche
 ## More from the same workshop
 
 - **[engram](https://github.com/nagisanzenin/engram)** — the reference omni-plugin: evidence-based learning with blind-graded recall and FSRS scheduling, on seven platforms.
-- **[effortmining](https://github.com/nagisanzenin/effortmining)** · **[idiolect](https://github.com/nagisanzenin/idiolect)** · **[production-grade](https://github.com/nagisanzenin/claude-code-production-grade-plugin)** · **[less](https://github.com/nagisanzenin/less)** — Claude Code plugins sharing the same habit: deterministic cores, receipts, and honest numbers.
+- **[effortmining](https://github.com/nagisanzenin/effortmining)** · **[idiolect](https://github.com/nagisanzenin/idiolect)** · **[production-grade](https://github.com/nagisanzenin/production-grade)** · **[less](https://github.com/nagisanzenin/less)** — Claude Code plugins sharing the same habit: deterministic cores, receipts, and honest numbers.
 
 ---
 
