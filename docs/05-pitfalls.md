@@ -132,6 +132,20 @@ Every entry: what actually happened → the rule it taught. All from [engram](ht
 
 ---
 
+## 22 · The hook output that is also a verdict
+
+**What happened:** ZCode's SessionStart runner parses a command hook's stdout **only if it starts with `{`** and schema-validates it as structured output; anything else — including the two plain-text nudge lines that five other platforms print happily — has its effect silently discarded *and the run recorded as failed* in the host's diagnostics. Engram's first draft registered a second wrapper entry next to the shared hook and told them apart by env-var sniffing. Its own pre-release review killed both halves: every session with reviews due would have logged a permanent red "failed hook" record while the nudge still arrived once (noise forever), and the no-double-delivery guard was only provable under an environment nothing actually produces.
+
+**Rule:** before wiring any ambient hook, find out whether the host treats stdout as **content to deliver** or **structured data to interpret** — and whether non-conforming output is dropped quietly or *adjudicated*. When one shared hook file feeds runners with different contracts, branch the format **inside one script on an observable property** (`$ZCODE_PLUGIN_ROOT` present → JSON; override var for manual routes); never duplicate the registration to fork the contract. One registration cannot double-deliver anywhere; two registrations plus a guard are exactly the shape guards are bad at proving. (engram v1.15.0.)
+
+## 23 · The quoted command that became one word
+
+**What happened:** engram's install doc told config-file route users to wire `"command": "\"ENGRAM_HOOK_FORMAT=json /Users/you/.agents/engram/hooks/session-start.sh\""`. The escaped quotes wrapped assignment **and** path into a single argv token — `command not found`, and on this platform mis-shaped hook output just degrades silently, so a user following the doc verbatim got a permanently missing nudge with zero errors pointing at the doc. Found only by the post-release reviewer trying to execute the documented line.
+
+**Rule:** shell-quoting rules inside manifest JSON are loader semantics you must verify by **execution**, in more than one shell, against the exact string the doc prints. Env assignments go outside quoted path tokens. The failing direction is always silence-with-nothing-registered — the same absence-not-error signature as pitfall #18, arriving through tokenization instead of YAML. (engram v1.15.1 §7.5 finding F1.)
+
+---
+
 ## The meta-lesson
 
 Engram's release protocol states it once and it applies double across platforms: **every gate you build misses its own bug class — the only things that ever found the real bugs were a fuzzer, an outside reviewer, and a real user.** With N platforms you cannot even run everything you ship, so the outside world isn't just helpful, it's structural: design for harmless degradation, publish honest status, and treat every user report from a platform you can't run as the integration test it is.

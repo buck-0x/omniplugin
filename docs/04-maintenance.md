@@ -1,6 +1,6 @@
 # 04 · Maintaining the matrix
 
-Creating an omni-platform plugin is one afternoon per platform. *Maintaining* one is where the design either pays off or collapses. The operating doctrine, from a year of engram releases (v0.4 → v1.11.1, seven platforms, ~25 releases):
+Creating an omni-platform plugin is one afternoon per platform. *Maintaining* one is where the design either pays off or collapses. The operating doctrine, from a year of engram releases (v0.4 → v1.15, nine platforms):
 
 ---
 
@@ -54,7 +54,7 @@ Track the ladder rung per platform (L0–L4, [01 · Anatomy](01-anatomy.md)) and
 With N platforms you will not be able to run all N locally. Structure for that:
 
 - **Issues are the demand signal** (Phase 0) and the verification channel ("if anything misbehaves, open an issue with what you see" — in every install doc).
-- **Contributors port; the maintainer re-researches the loader.** Two of engram's seven platforms arrived as external PRs, and two more (OpenClaw, Pi) began as user issues. The maintainer's review job is Phase-1 research against primary sources — the OpenCode PR hardened across four review rounds; the AG review *removed* most of the contribution and cited the official schema, the CLI changelog, and a flagship plugin for every requested change.
+- **Contributors port; the maintainer re-researches the loader.** Two of the first seven platforms arrived as external PRs, and two more (OpenClaw, Pi) began as user issues. The maintainer's review job is Phase-1 research against primary sources — the OpenCode PR hardened across four review rounds; the AG review *removed* most of the contribution and cited the official schema, the CLI changelog, and a flagship plugin for every requested change.
 - **Close the loop with strangers.** After resolving an external issue/PR: thank them, state what shipped and how to get it, name what's still unverified and how they can help. This is how a requester becomes your standing test environment for a platform you'll never install.
 
 ## 6 · Watch for platform drift

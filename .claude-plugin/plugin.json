@@ -1,6 +1,6 @@
 {
   "name": "omniplugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The omni-platform plugin playbook, installable: gives your agent the doctrine, checklists, and per-platform crib sheets for building and porting plugins that run on Claude Code, Codex, OpenCode, Hermes, Antigravity, and more.",
   "author": {
     "name": "Quan Duong"

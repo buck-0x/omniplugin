@@ -20,6 +20,10 @@
 #     see the dual-mode variant below.
 #   - Platform-specific command spellings: rewrite YOUR OWN strings
 #     (e.g. sed 's|/learn|/skill learn|g') in EVERY output path.
+#   - One file, two runner contracts (engram v1.15, ZCode): if a host parses stdout
+#     as JSON-only — and logs non-conforming runs FAILED — branch the OUTPUT FORMAT
+#     inside this script on an observable env property ($PLATFORM_ROOT / a forced
+#     FORMAT var). Never duplicate the registration; pitfalls #22–23.
 
 set -u
 command -v python3 >/dev/null 2>&1 || exit 0                     # missing runtime → silence

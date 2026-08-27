@@ -85,5 +85,5 @@ A platform addition is a release like any other — it runs the full [release pr
 ## Phase 6 · Keep it alive
 
 - Watch the platform's changelog; loaders change fast (pin what version your research was done against — every crib sheet here carries its date).
-- External contributors will send ports. Welcome them — two of engram's seven platforms were contributed, and two more began as user issues — but **re-run Phase 1 yourself before merging**. The review that matters is against the platform's actual loader, not against the diff's internal quality. Requesting changes that *remove* work is normal (the AG PR shrank to ~7 lines under review).
+- External contributors will send ports. Welcome them — two of the first seven platforms were contributed (nine exist today), and two more began as user issues — but **re-run Phase 1 yourself before merging**. The review that matters is against the platform's actual loader, not against the diff's internal quality. Requesting changes that *remove* work is normal (the AG PR shrank to ~7 lines under review).
 - When a port's unverified paths get exercised by real users, upgrade the honest-status section — or fix what they found and reply.
